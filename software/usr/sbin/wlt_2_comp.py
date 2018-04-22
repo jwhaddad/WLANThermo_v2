@@ -339,15 +339,15 @@ sys.excepthook = log_uncaught_exceptions
 # Variablendefinition und GPIO Pin-Definition
 ADC_Channel = 0  # Analog/Digital-Channel
 #GPIO START
-SCLK        = 18 # Serial-Clock
-MOSI        = 24 # Master-Out-Slave-In
-MISO        = 23 # Master-In-Slave-Out
-CS          = 25 # Chip-Select
-CS_MAX1 = 8 # MAX31855 IC1
-CS_MAX2 = 7 # MAX31855 IC2
-BEEPER      = 17 # Piepser
-PWM         = 4
-IO          = 2
+SCLK        = 11 # Serial-Clock
+MOSI        = 10 # Master-Out-Slave-In
+MISO        = 9 # Master-In-Slave-Out
+CS          = 8 # Chip-Select
+CS_MAX1 = 20 # MAX31855 IC1
+CS_MAX2 = 21 # MAX31855 IC2
+BEEPER      = 4 # Piepser
+PWM         = 18
+IO          = 23
 #GPIO END
 
 #Hardwareversion einlesen
