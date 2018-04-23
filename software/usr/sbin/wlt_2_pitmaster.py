@@ -35,7 +35,7 @@ import sys
 gettext.install('wlt_2_pitmaster', localedir='/usr/share/WLANThermo/locale/', unicode=True)
 
 # GPIO START
-PIT_PWM = 4  # Pitmaster PWM
+PIT_PWM = 18  # Pitmaster PWM
 
 # Wir laufen als root, auch andere müssen die Config schreiben!
 os.umask(0)
@@ -441,12 +441,12 @@ def main(instance):
     logger.addHandler(handler)
 
     try:
-        pitmaster_hwconfig = {'v1': {0: {'io': 4, 'io_pwm': 4, 'servo': 4, 'fan_pwm': 4}},
-                              'v2': {0: {'io': 4, 'io_pwm': 4, 'servo': 4, 'fan_pwm': 4}},
-                              'v3': {0: {'io': 4, 'fan': 4, 'io_pwm': 4, 'servo': 4, 'fan_pwm': 4}},
-                              'miniV2': {0: {'io': 4, 'fan': 4, 'io_pwm': 4, 'servo': 6, 'fan_pwm': 6},
-                                         1: {'io': 5, 'fan': 5, 'io_pwm': 5, 'servo': 12, 'fan_pwm': 12}},
-                              'miniplus': {0: {'io': 4, 'fan': 4, 'io_pwm': 4, 'servo': 6, 'fan_pwm': 6}},
+        pitmaster_hwconfig = {'v1': {0: {'io': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
+                              'v2': {0: {'io': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
+                              'v3': {0: {'io': 18, 'fan': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
+                              'miniV2': {0: {'io': 18, 'fan': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18},
+                                         1: {'io': 23, 'fan': 23, 'io_pwm': 23, 'servo': 23, 'fan_pwm': 23}},
+                              'miniplus': {0: {'io': 18, 'fan': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
                               }[
             Config.get('Hardware', 'version')][instance]
     except KeyError:
