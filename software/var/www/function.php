@@ -313,13 +313,13 @@ function getPlotConfig($plot,$temp_unit){
 	$plot_setting .= "set xdata time;";
 	$plot_setting .= "set timefmt \\\"%d.%m.%y %H:%M:%S\\\";";
 	$plot_setting .= "set format x \\\"%H:%M\\\";";
-	$plot_setting .= "set xlabel \\\"Uhrzeit\\\";";
-	$plot_setting .= "set y2label \\\"Temperatur ".$temp_unit."\\\";";
+	$plot_setting .= "set xlabel \\\"Time\\\";";
+	$plot_setting .= "set y2label \\\"Temperature ".$temp_unit."\\\";";
 	$plot_setting .= "set y2range [".$_SESSION["plotbereich_min"].":".$_SESSION["plotbereich_max"]."];";
 	$plot_setting .= "set xtics nomirror;";
 	$plot_setting .= "set y2tics nomirror;";
 	if ($_SESSION["plot_pit"] == "True" || $_SESSION["plot_pit2"] == "True") {
-		$plot_setting .= "set ylabel \\\"Pitmaster %\\\";";
+		$plot_setting .= "set ylabel \\\"Power Output %\\\";";
 		$plot_setting .= 'set yrange ["0":"105"];';
 		$plot_setting .= "set ytics nomirror;";	
 	if ($_SESSION["plot_pit"] == "True") {
@@ -331,7 +331,7 @@ function getPlotConfig($plot,$temp_unit){
 		$plot .= ", '/var/log/WLAN_Thermo/TEMPLOG.csv' every ::1 using 1:".($_SESSION["channel_count"] + 4)." with lines lw 2 lc rgbcolor '".$_SESSION["color_pit2"]."' t 'Pitmaster 2 %' axes x1y1";
 	}
 	}else{
-		$plot_setting .= "set ylabel \\\"Temperatur [°C]\\\";";
+		$plot_setting .= "set ylabel \\\"Temperature [°C]\\\";";
 		$plot_setting .= "set yrange [".$_SESSION["plotbereich_min"].":".$_SESSION["plotbereich_max"]."];";
 		$plot_setting .= "set ytics nomirror;";		
 	}	
