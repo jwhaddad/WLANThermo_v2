@@ -31,8 +31,8 @@ then
 elif [ -t 0 ]
 then
     echo 'No password found!'
-    echo 'Please enter the new password for user >wlanthermo< of the protected area!'
-         htpasswd -c /etc/lighttpd/htpasswd wlanthermo
+    echo 'Setting default password >raspberry<'
+         htpasswd -c -b /etc/lighttpd/htpasswd wlanthermo raspberry
 else
     echo 'No password found!'
     echo 'Setting default password >raspberry<'
