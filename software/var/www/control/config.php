@@ -1261,7 +1261,7 @@ for ($pitmaster = 0; $pitmaster < $_SESSION["pitmaster_count"]; $pitmaster++) {
 // ##################################################################################
 ?>
 		<div class="config small">
-			<div class="headline"><?php echo gettext("Display Einstellungen");?></div>		
+			<div class="headline"><?php echo gettext("Display Settings");?></div>		
 			<div class="headicon"><img src="../images/icons16x16/display.png" alt=""></div>
 			<div class="config_text row_1 col_6"><?php echo gettext("LCD Display");?>:</div>
 			<div class="config_text row_1 col_7"><input type="checkbox" name="lcd_show" id="lcd_present" value="True" <?php if($ini['Display']['lcd_present'] == "True") {echo "checked=\"checked\"";}?> ></div>
@@ -1287,7 +1287,7 @@ for ($pitmaster = 0; $pitmaster < $_SESSION["pitmaster_count"]; $pitmaster++) {
 // ##################################################################################
 ?>	
 		<div class="config middle">
-			<div class="headline"><?php echo gettext("Logging settings");?></div>
+			<div class="headline"><?php echo gettext("Logging Settings");?></div>
 			<div class="headicon"><img src="../images/icons16x16/log.png" alt=""></div>
 			<div class="config_text row_1 col_1"><?php echo gettext("Logging level pitmaster");?>:</div>
 			<div class="config_text row_1 col_4">
