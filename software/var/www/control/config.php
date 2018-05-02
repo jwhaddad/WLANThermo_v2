@@ -773,10 +773,10 @@ if(isset($_POST["save"])) {
 				<div class="config_text row_1 col_1"><?php echo gettext("Name");?>:</div>
 				<div class="config_text row_1 col_6"<?php if ($i > 7) echo ' style="display: none;"';?>><?php echo gettext("Probe Type");?>:</div>
 				<div class="config_text row_1 col_3"><input type="text" name="tch<?php echo $i;?>" size="25" maxlength="28" value="<?php echo $ini['ch_name']['ch_name'.$i];?>"></div>
-				<div class="config_text row_3 col_1"><?php echo gettext("Probe Thresholds");?></div>
-				<div class="config_text row_3 col_2"><?php echo gettext("min");?>:</div>
+				<div class="config_text row_3 col_1"><?php echo gettext("Temp Alarm");?></div>
+				<div class="config_text row_3 col_2"><?php echo gettext("Low");?>:</div>
 				<div class="config_text row_3 col_3"><input type="text" onkeyup="this.value=this.value.replace(/[^0-9-]/g,'');" name="temp_min<?php echo $i;?>" size="6" maxlength="3" value="<?php echo $ini['temp_min']['temp_min'.$i];?>"></div>
-				<div class="config_text row_3 col_4"><?php echo gettext("max");?>:</div>
+				<div class="config_text row_3 col_4"><?php echo gettext("High");?>:</div>
 				<div class="config_text row_3 col_5"><input type="text" onkeyup="this.value=this.value.replace(/\D/, '');" name="temp_max<?php echo $i;?>" size="6" maxlength="3" value="<?php echo $ini['temp_max']['temp_max'.$i];?>"></div>
 				<div class="config_text row_2 col_6"><?php echo gettext("Plot Color");?>:</div>
 				<div class="config_text row_2 col_1"<?php if ($i > 7) echo ' style="display: none;"';?>><?php echo gettext("Measuring Resistance");?>:</div>
