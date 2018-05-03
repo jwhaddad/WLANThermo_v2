@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 // Version is set by build script
-$_SESSION["webGUIversion"] = "XXX_VERSION_XXX";
+$_SESSION["webGUIversion"] = "V2.6.1";
 $title = "WLANThermo";
 $document_root = getenv('DOCUMENT_ROOT');
 include("gettext.php");
