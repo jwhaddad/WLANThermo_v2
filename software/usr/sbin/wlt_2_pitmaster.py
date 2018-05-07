@@ -443,10 +443,12 @@ def main(instance):
     try:
         pitmaster_hwconfig = {'v1': {0: {'io': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
                               'v2': {0: {'io': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
+
                               'v3': {0: {'io': 18, 'fan': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
                               'miniV2': {0: {'io': 18, 'fan': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18},
                                          1: {'io': 23, 'fan': 23, 'io_pwm': 23, 'servo': 23, 'fan_pwm': 23}},
                               'miniplus': {0: {'io': 18, 'fan': 18, 'io_pwm': 18, 'servo': 18, 'fan_pwm': 18}},
+
                               }[
             Config.get('Hardware', 'version')][instance]
     except KeyError:
