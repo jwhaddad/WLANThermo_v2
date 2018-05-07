@@ -17,9 +17,6 @@ $plotcolors = array('green', 'red', 'blue', 'olive', 'magenta', 'yellow', 'viole
 	'steelblue', 'gold', 'dark-green', 'midnight-blue', 'dark-khaki', 'dark-olivegreen',
 	'pink', 'chartreuse', 'gray', 'slategrey');
 
-$app_sounds=array('None', 'Standard', 'Bell', 'Firepager', 'Police_kurz', 'Police_lang',
-	 'Sirene', 'SmokeAlarm', 'TempleBell', 'Tornado_kurz', 'Tornado_lang');
-$app_devices=array('iOS' => '0', 'Android' => '1');
 $log_levels = array('DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL');
 
 // ##################################################################################
@@ -266,59 +263,6 @@ if(isset($_POST["save"])) {
 				if($ini['Push']['push_body'] !== $_POST['push_body']){
 					$ini['Push']['push_body'] = $_POST['push_body'];
 				}
-			}
-
-			// ######################################################################
-			// App Einstellungen ----------------------------------------------------
-			// ######################################################################
-			
-			// Pushbenachrichtigung Aktivieren/Deaktivieren
-			if(isset ($_POST['app_alert'])) {$_POST['app_alert'] = "True"; }else{ $_POST['app_alert'] = "False";}
-			if($ini['App']['app_alert'] !== $_POST['app_alert']){
-				$ini['App']['app_alert'] = $_POST['app_alert'];
-			}
-			
-			// App app_inst_id
-			if (isset($_POST['app_inst_id'])) {
-				if($ini['App']['app_inst_id'] !== $_POST['app_inst_id']){
-					$ini['App']['app_inst_id'] = $_POST['app_inst_id'];
-				}
-			}
-			// App app_device
-			if (isset($_POST['app_device'])) {
-				if($ini['App']['app_device'] !== $_POST['app_device']){
-					$ini['App']['app_device'] = $_POST['app_device'];
-				}			
-			}
-			// App app_inst_id2
-			if (isset($_POST['app_inst_id2'])) {
-				if($ini['App']['app_inst_id2'] !== $_POST['app_inst_id2']){
-					$ini['App']['app_inst_id2'] = $_POST['app_inst_id2'];
-				}			
-			}
-			// App app_device2
-			if (isset($_POST['app_device2'])) {
-				if($ini['App']['app_device2'] !== $_POST['app_device2']){
-					$ini['App']['app_device2'] = $_POST['app_device2'];
-				}			
-			}
-			// App app_inst_id3
-			if (isset($_POST['app_inst_id3'])) {
-				if($ini['App']['app_inst_id3'] !== $_POST['app_inst_id3']){
-					$ini['App']['app_inst_id3'] = $_POST['app_inst_id3'];
-				}			
-			}
-			// App app_device3
-			if (isset($_POST['app_device3'])) {
-				if($ini['App']['app_device3'] !== $_POST['app_device3']){
-					$ini['App']['app_device3'] = $_POST['app_device3'];
-				}
-			}
-			// App app_sound
-			if (isset($_POST['app_sound'])) {
-				if($ini['App']['app_sound'] !== $_POST['app_sound']){
-					$ini['App']['app_sound'] = $_POST['app_sound'];
-				}			
 			}
 			
 			// ######################################################################
@@ -772,10 +716,10 @@ if(isset($_POST["save"])) {
 				<div class="config_text row_1 col_1"><?php echo gettext("Name");?>:</div>
 				<div class="config_text row_1 col_6"<?php if ($i > 7) echo ' style="display: none;"';?>><?php echo gettext("Probe Type");?>:</div>
 				<div class="config_text row_1 col_3"><input type="text" name="tch<?php echo $i;?>" size="25" maxlength="28" value="<?php echo $ini['ch_name']['ch_name'.$i];?>"></div>
-				<div class="config_text row_3 col_1"><?php echo gettext("Probe Thresholds");?></div>
-				<div class="config_text row_3 col_2"><?php echo gettext("min");?>:</div>
+				<div class="config_text row_3 col_1"><?php echo gettext("Temp Alarm");?></div>
+				<div class="config_text row_3 col_2"><?php echo gettext("Low");?>:</div>
 				<div class="config_text row_3 col_3"><input type="text" onkeyup="this.value=this.value.replace(/[^0-9-]/g,'');" name="temp_min<?php echo $i;?>" size="6" maxlength="3" value="<?php echo $ini['temp_min']['temp_min'.$i];?>"></div>
-				<div class="config_text row_3 col_4"><?php echo gettext("max");?>:</div>
+				<div class="config_text row_3 col_4"><?php echo gettext("High");?>:</div>
 				<div class="config_text row_3 col_5"><input type="text" onkeyup="this.value=this.value.replace(/\D/, '');" name="temp_max<?php echo $i;?>" size="6" maxlength="3" value="<?php echo $ini['temp_max']['temp_max'.$i];?>"></div>
 				<div class="config_text row_2 col_6"><?php echo gettext("Plot Color");?>:</div>
 				<div class="config_text row_2 col_1"<?php if ($i > 7) echo ' style="display: none;"';?>><?php echo gettext("Measuring Resistance");?>:</div>
@@ -854,69 +798,7 @@ if(isset($_POST["save"])) {
 			<div class="config_text row_4 col_1"><?php echo gettext("Username");?>:</div>
 			<div class="config_text row_4 col_3"><input type="text" name="email_username" id="email_username" size="15" maxlength="50" value="<?php echo $ini['Email']['username'];?>"></div>
 		</div>
-<?php
-// ##################################################################################
-// Formular App Einstellungen -----------------------------------------------------
-// ##################################################################################
-?>
-		<div class="config middle">
-			<div class="headline"><?php echo gettext("App Settings");?></div>
-			<div class="config_text row_1 col_6"><?php echo gettext("Enable App Notification");?>:</div>			
-			<div class="config_text row_1 col_7"><input type="checkbox" name="app_alert" id="app_alert" value="True" <?php if($ini['App']['app_alert'] == "True") {echo "checked=\"checked\"";}?> ></div>
-			<div class="headicon"><img src="../images/icons16x16/app.png" alt=""></div>
-			<div class="config_text row_2 col_1"><?php echo gettext("Device ID");?> 1:</div>
-			<div class="config_text row_3 col_1"><?php echo gettext("Device ID");?> 2:</div>
-			<div class="config_text row_4 col_1"><?php echo gettext("Device ID");?> 3:</div>
-			<div class="config_text row_1 col_1"><?php echo gettext("Alarm Sound");?>:</div>
-			<div class="config_text row_2 col_5"><input type="text" name="app_inst_id" id="app_inst_id" size="35" maxlength="200" value="<?php echo $ini['App']['app_inst_id'];?>"></div>
-			<div class="config_text row_3 col_5"><input type="text" name="app_inst_id2" id="app_inst_id2" size="35" maxlength="200" value="<?php echo $ini['App']['app_inst_id2'];?>"></div>
-			<div class="config_text row_4 col_5"><input type="text" name="app_inst_id3" id="app_inst_id3" size="35" maxlength="200" value="<?php echo $ini['App']['app_inst_id3'];?>"></div>
-			<div class="config_text row_1 col_3">
-				<select name="app_sound" id="app_sound_id" size="1">	
-					<?php
-					foreach($app_sounds AS $sound)
-					{?> 
-						<option value="<?php echo $sound ?>" <?php if ($ini['App']['app_sound'] == $sound){echo " selected";} ?> ><?php echo $sound ?></option><?php
-					}?>
-				</select>
-			</div>
-			<div class="config_text row_2 col_4"></div>
-			<div class="config_text row_3 col_4"></div>
-			<div class="config_text row_4 col_4"></div>
-			<div class="config_text row_2 col_5"></div>
-			<div class="config_text row_3 col_5"></div>
-			<div class="config_text row_4 col_5"></div>
-			<div class="config_text row_2 col_6"><?php echo gettext("Device Type");?> 1:</div>
-			<div class="config_text row_3 col_6"><?php echo gettext("Device Type");?> 2:</div>
-			<div class="config_text row_4 col_6"><?php echo gettext("Device Type");?> 3:</div>
-			<div class="config_text row_2 col_7">
-				<select name="app_device" id="app_device_id1" size="1">	
-					<?php
-					foreach($app_devices as $device_name => $device_id)
-					{?> 
-						<option value="<?php echo $device_id ?>" <?php if ($ini['App']['app_device'] == $device_id){echo " selected";} ?> ><?php echo $device_name ?></option><?php
-					}?>
-				</select>			
-			</div>
-			<div class="config_text row_3 col_7">
-				<select name="app_device2" id="app_device_id2" size="1">	
-					<?php
-					foreach($app_devices as $device_name => $device_id)
-					{?> 
-						<option value="<?php echo $device_id ?>" <?php if ($ini['App']['app_device2'] == $device_id){echo " selected";} ?> ><?php echo $device_name ?></option><?php
-					}?>
-				</select>			
-			</div>
-			<div class="config_text row_4 col_7">
-				<select name="app_device3" id="app_device_id3" size="1">	
-					<?php
-					foreach($app_devices as $device_name => $device_id)
-					{?> 
-						<option value="<?php echo $device_id ?>" <?php if ($ini['App']['app_device3'] == $device_id){echo " selected";} ?> ><?php echo $device_name ?></option><?php
-					}?>
-				</select>			
-			</div>
-		</div>
+
 <?php
 // ##################################################################################
 // Formular Telegram Einstellungen --------------------------------------------------
@@ -1260,7 +1142,7 @@ for ($pitmaster = 0; $pitmaster < $_SESSION["pitmaster_count"]; $pitmaster++) {
 // ##################################################################################
 ?>
 		<div class="config small">
-			<div class="headline"><?php echo gettext("Display Einstellungen");?></div>		
+			<div class="headline"><?php echo gettext("Display Settings");?></div>		
 			<div class="headicon"><img src="../images/icons16x16/display.png" alt=""></div>
 			<div class="config_text row_1 col_6"><?php echo gettext("LCD Display");?>:</div>
 			<div class="config_text row_1 col_7"><input type="checkbox" name="lcd_show" id="lcd_present" value="True" <?php if($ini['Display']['lcd_present'] == "True") {echo "checked=\"checked\"";}?> ></div>
@@ -1286,7 +1168,7 @@ for ($pitmaster = 0; $pitmaster < $_SESSION["pitmaster_count"]; $pitmaster++) {
 // ##################################################################################
 ?>	
 		<div class="config middle">
-			<div class="headline"><?php echo gettext("Logging settings");?></div>
+			<div class="headline"><?php echo gettext("Logging Settings");?></div>
 			<div class="headicon"><img src="../images/icons16x16/log.png" alt=""></div>
 			<div class="config_text row_1 col_1"><?php echo gettext("Logging level pitmaster");?>:</div>
 			<div class="config_text row_1 col_4">

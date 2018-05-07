@@ -17,7 +17,7 @@ if(isset($_GET['page'])) {
 	</div>
 	<div class="wifi_menu">
 		<input class="button" type="button" value="WiFi Info" name="wlan0_info" onclick="document.location='?page='+this.name" />
-		<input class="button" type="button" value="Einstellungen" name="wpa_conf" onclick="document.location='?page='+this.name" />
+		<input class="button" type="button" value="Settings" name="wpa_conf" onclick="document.location='?page='+this.name" />
 	</div>
 
 <div class="wifi_content">
