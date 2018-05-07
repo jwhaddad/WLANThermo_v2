@@ -8,7 +8,6 @@ session_start();
 include("../header.php");
 include("../function.php");
 session("../conf/WLANThermo.conf");
-$tmpFile = '../temperaturen.csv';
 $inipath = '../conf/WLANThermo.conf';
 
 // gnuplot color names, to be converted to CSS color names by to_css_color($gnuplotcolor) if needed.
@@ -191,22 +190,6 @@ if(isset($_POST["save"])) {
 					$ini['Alert']['alarm_interval'] = intval($_POST['alarm_interval']);
 				}
 			}
-			// ######################################################################
-			// WhatsApp Einstellungen -----------------------------------------------
-			// ######################################################################
-			
-			// WhatsApp Empfänger
-			if (isset($_POST['whatsapp_number'])) {
-				if($ini['WhatsApp']['whatsapp_number'] !== $_POST['whatsapp_number']){
-					$ini['WhatsApp']['whatsapp_number'] = $_POST['whatsapp_number'];
-				}
-			}
-			// WhatsApp Benachrichtigung Aktivieren/Deaktivieren
-			if(isset ($_POST['whatsapp_alert'])) {$_POST['whatsapp_alert'] = "True"; }else{ $_POST['whatsapp_alert'] = "False";}
-			if($ini['WhatsApp']['whatsapp_alert'] !== $_POST['whatsapp_alert']){
-				$ini['WhatsApp']['whatsapp_alert'] = $_POST['whatsapp_alert'];
-			}
-			
 			// ######################################################################
 			// Email Einstellungen --------------------------------------------------
 			// ######################################################################
@@ -933,19 +916,6 @@ if(isset($_POST["save"])) {
 					}?>
 				</select>			
 			</div>
-		</div>
-<?php
-// ##################################################################################
-// Formular WhatsApp Einstellungen --------------------------------------------------
-// ##################################################################################	
-?>
-		<div class="config little">
-			<div class="headline"><?php echo gettext("WhatsApp Settings");?></div>
-			<div class="headicon"><img src="../images/icons16x16/whatsapp.png" alt=""></div>
-			<div class="config_text row_1 col_1"><?php echo gettext("To");?>:</div>
-			<div class="config_text row_1 col_3"><input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="whatsapp_number" id="whatsapp_number" size="25" maxlength="27" value="<?php echo $ini['WhatsApp']['whatsapp_number'];?>"></div>
-			<div class="config_text row_1 col_6"><?php echo gettext("Enable WhatsApp");?>:</div>			
-			<div class="config_text row_1 col_7"><input type="checkbox" name="whatsapp_alert" id="whatsapp_alert" value="True" <?php if($ini['WhatsApp']['whatsapp_alert'] == "True") {echo "checked=\"checked\"";}?> ></div>
 		</div>
 <?php
 // ##################################################################################
